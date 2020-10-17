@@ -1,2 +1,2 @@
 # WIT-CollegeDatabase
-CRUD Application for Distributed Systems
+CRUD Application connected to an PhP WampServer with MySQL.
