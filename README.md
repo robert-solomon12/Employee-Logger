@@ -1,2 +1,2 @@
-# WIT-CollegeDatabase
-CRUD Application connected to an PhP WampServer with MySQL.
+# Employee-Database-MySQL
+An Employee Application with C.R.U.D. Functionality connected to a PhP WampServer with MySQL.
