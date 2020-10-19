@@ -1,6 +1,8 @@
 package application;
 	
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,9 +21,11 @@ public class SceneLoader extends Application {
 	public void start(Stage primaryStage) throws Exception {
 
 	 try {
-
+		 
          loadAllScenes();
-
+         
+         
+         
          primaryStage.setScene(scene1);
          primaryStage.show();
      } catch (Exception e) {
@@ -41,20 +45,28 @@ public class SceneLoader extends Application {
          scene1.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
          root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
          scene2 = new Scene(root);
+         
+         
+         
 
      } catch (IOException e) {
          // TODO Auto-generated catch block
          e.printStackTrace();
      }
+     
+     
 
  }	
 	
 	public static void main(String[] args) {
 		launch(args);
-	}
+//		/** The name of the table we are testing with */
+//		String tableName = "EMPLOYEES";
+			
+	
 }
 
-
+}
 //try {
 //Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
 //Scene scene = new Scene(root, 400, 400);
