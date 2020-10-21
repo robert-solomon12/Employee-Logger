@@ -1,5 +1,10 @@
 package view;
-	
+
+
+
+/*
+  * Author: Robert Solomon
+ */
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,19 +16,25 @@ import javafx.scene.Scene;
 
 public class SceneLoader extends Application {
 	
-	
+	//Variable definition for Scene 1 and 2
     public static Scene scene1, scene2;
     
+    //Method to start and launch Scene
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
+		
+		/*
+		 * Try/Catch exception handler to load scene and/or print error if scenes crashes
+		 */
 	 try {
 		 
          loadAllScenes();
          
-         
-         
          primaryStage.setScene(scene1);
+         
+         //setting window title
+         primaryStage.setTitle("Java-JDBC-Assignment-1");
          primaryStage.show();
      } catch (Exception e) {
          e.printStackTrace();
@@ -31,11 +42,18 @@ public class SceneLoader extends Application {
  }
 	
 	
-	
+	/*
+	 * Method call launched at main (by public void start) to load all scenes in the backend during Runtime
+	 */
  public void loadAllScenes() {
      Parent root;
+     
+     /*
+      * try/catch to load up all scenes or print error if something goes wrong.
+      */
      try {
     	 
+    	 //Setting and loading up all scenes
          root = FXMLLoader.load(getClass().getResource("FirstPage.fxml"));
         
          scene1 = new Scene(root);
@@ -43,9 +61,6 @@ public class SceneLoader extends Application {
          root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
          scene2 = new Scene(root);
          
-         
-         
-
      } catch (IOException e) {
          // TODO Auto-generated catch block
          e.printStackTrace();
@@ -57,21 +72,7 @@ public class SceneLoader extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
-//		/** The name of the table we are testing with */
-//		String tableName = "EMPLOYEES";
-			
-	
+				
 }
 
 }
-//try {
-//Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
-//Scene scene = new Scene(root, 400, 400);
-//primaryStage.setTitle("WIT Database");
-//primaryStage.setScene(scene);
-//primaryStage.show();
-//} catch(Exception e) {
-//e.printStackTrace();
-//}
-//}
-//

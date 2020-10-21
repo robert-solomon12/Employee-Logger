@@ -1,8 +1,11 @@
 package model;
 
+
+/*
+ * EmployeeModel Object with 6 attributes, this is the blueprint for creating multiple variants of the Employee Object.
+ */
 public class employeeModel {
 
-	
 		private Integer id;
 	 	private String firstName;
 	    private String surname;
@@ -11,7 +14,9 @@ public class employeeModel {
 	    private String gender;
 	    
 	    
-	    
+	  /*
+	   * EmployeeModel Contructor initializing multiple objects of this type, this object is called when the EmployeeModel object is called.
+	   */
 		public employeeModel(Integer id, String firstName, String surname, Integer ssNumber, Integer salary ,String gender) {
 			this.id = id;
 			this.firstName = firstName;
@@ -21,7 +26,9 @@ public class employeeModel {
 			this.gender = gender;
 		}
 
-		
+		/*
+		 * Getters/Setters for each attributes of the object.
+		 */
 		public Integer getId() {
 			return id;
 		}

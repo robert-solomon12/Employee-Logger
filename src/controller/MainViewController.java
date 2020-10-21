@@ -70,41 +70,43 @@ public class MainViewController implements Initializable {
 	private final String tableName = "testemployeeinfos";
 	
 	
-	//Handler to execute the insertion method below
-	@FXML
-	private void handleButtonA(ActionEvent event) throws SQLException {
-		System.out.println("Processing Event Handler!");
-		if(event.getSource() == insertB) {
-			insertRecB();
-			System.out.println("Executing insertion Action Event, record inserted!");
-		}else if (event.getSource() == updateB){
-			updateRecB();
-			System.out.println("Executing update Action Event, record updated!");
-		}else if (event.getSource() == deleteB) {
-			deletionRecB();
-			System.out.println("Executing deletion Action Event, record deleted!");
+	
+
+	
+	/*Initializer to always call the showEmployees method below when user enters the main view
+	 *or even when the user closes the program with existing users in the database, users will persist and always be displayed unless they are deleted.
+	 */
+		@Override
+		public void initialize(URL arg0, ResourceBundle arg1) {
+			// TODO Auto-generated method stub
+		try {
+			showEmployees();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	}
-
+		}
 	
 	
-	public void initialize() throws SQLException {
-//		createTable();
-		showEmployees();
-	}
-
-	
+	/*
+	 * Connection method call to execute connection to my WAMP Server Database
+	 */
 	public Connection getConnection() throws SQLException {
 		
      	Connection conn;
 
-     	
 		try {
+			
+			/*
+			 * Connection String containing 3 parameters to establish connectivity to my Database WAMP SERVER (URL, USERNAME, PASSWORD)
+			 */
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/testemployeedb?serverTimezone=UTC","root","admin");
-					
+				
+			//Printing a successful connection message if a successful connection has been established. 
+			System.out.println("Connection to Database has been established!");	
 			return conn;
-		}catch (Exception ex) {
-			System.out.println("Error: " + ex.getMessage());
+		}catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
 			return null;
 		}
 		// TODO: handle exception
@@ -117,6 +119,7 @@ public class MainViewController implements Initializable {
 		Statement stmt;
 		ResultSet rs;
 
+		
 		try {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(query);
@@ -132,10 +135,16 @@ public class MainViewController implements Initializable {
 		return employeeList;
 	}
 	
+	
+	/*
+	 * Method call to list the existing employees in the Observable list by calling the getEmployeeList  
+	 */
 	public void showEmployees() throws SQLException {
 		ObservableList<employeeModel> list = getEmployeeList();
 		
-		
+		/*Observable list populated in table view by taking two arguments, the object model, employeeModel and the
+		 * variable type of the each attribute of the object model
+		 */
 		idColumn.setCellValueFactory(new PropertyValueFactory<employeeModel, Integer>("id"));
 		firstNameColumn.setCellValueFactory(new PropertyValueFactory<employeeModel, String>("firstName"));
 		surnameColumn.setCellValueFactory(new PropertyValueFactory<employeeModel, String>("surname"));
@@ -143,27 +152,52 @@ public class MainViewController implements Initializable {
 		salaryColumn.setCellValueFactory(new PropertyValueFactory<employeeModel, Integer>("salary"));
 		genderColumn.setCellValueFactory(new PropertyValueFactory<employeeModel, String>("gender"));
 		
+		//Setting the items in the list by taking the observablelist object type called 'list' to set the items and pass them to the respective columns.
 		tableFormView.setItems(list);
 	}
+	
+	/*
+	 * Handlers to execute their respective insertion/update/deletion method below
+	 */
+	@FXML
+	private void handleButtonA(ActionEvent event) throws SQLException {
+		System.out.println("Processing Event Handler!");
+		if(event.getSource() == insertB) {
+			insertRecB();
+			System.out.println("Executing insertion Action Event, record inserted!");
+		}else if (event.getSource() == updateB){
+			updateRecB();
+			System.out.println("Executing update Action Event, record updated!");
+		}else if (event.getSource() == deleteB) {
+			deletionRecB();
+			System.out.println("Executing deletion Action Event, record deleted!");
+		}
+	}
 
-
-	//insertion method function to execute 
-	//@FXML
+	/*
+	 * Insertion method function to execute the 'INSERT INTO' SQL Command into the employeeinfos table,
+	 * in this case to allow the user to insert input records with the click of a button calling this function. 
+	 */
 	private void insertRecB() throws SQLException {
-
+		
+		//Insertion query method 'INSERT INTO' table which is defined above as a variable called 'tablename' and concatinated below   
 		String query = "INSERT INTO " +this.tableName +" VALUES (" + idTf.getText() + ",'" + firstNameTf.getText()
 		+ "','" + surnameTf.getText() + "'," + salaryTf.getText() + "," + ssNumberTf.getText() + ",'" + genderTf.getText() + "')";
+		//specifies and calls the query method
 		executeQuery(query);
 		showEmployees();
 	}
 	
+	/*
+	 * Update method function to execute the 'UPDATE' and 'SET' SQL Command in the employeeinfos table where ID is selected,
+	 * in this case to allow the user to update existing records based on ID Number and then with the click of a button calling this function.
+	 */
 	
-	//@FXML
 	private void updateRecB() throws SQLException {
 		
 		try {
 			
-		String query = "UPDATE testemployeeinfos SET FIRSTNAME = '" + firstNameTf.getText()
+		String query = "UPDATE " + this.tableName +" SET FIRSTNAME = '" + firstNameTf.getText()
 		+ "', SURNAME = '" + surnameTf.getText() + "', SALARY = " + salaryTf.getText() + ", SSNUMBER = " + ssNumberTf.getText() + ", GENDER = '" + genderTf.getText() + "' WHERE ID = " + idTf.getText() +"";
 	    executeQuery(query);
 	    showEmployees();
@@ -173,19 +207,30 @@ public class MainViewController implements Initializable {
 		}
 	}
 	
+	/*
+	 * Deletion method call to execute the 'DELETE FROM' SQL Command from the employeeinfos table where the ID is selected, in this case
+	 * to allow the user to delete the selected record existing
+	 * in the tableView and remove it from the Database in WAMP Server once the server is refreshed.
+	 */
 	//@FXML
 	private void deletionRecB() throws SQLException {
 
-		String query = "DELETE FROM testemployeeinfos WHERE ID =" + idTf.getText() + "";
+		String query = "DELETE FROM " +this.tableName +" WHERE ID =" + idTf.getText() + "";
 		executeQuery(query);
 		showEmployees();
 	}
 	
+	/*
+	 * MouseEvent method call to populate and display the selected record displayed in the Table in the Textfield 
+	 */
 	@FXML
 	private void handleMouseE(MouseEvent event) {
-	 employeeModel epMouseE = tableFormView.getSelectionModel().getSelectedItem();
-//	 System.out.println("id " + epMouseE.getId());
-//	 System.out.println("firstName " +epMouseE.getFirstName());
+	 employeeModel epMouseE = tableFormView.getSelectionModel().getSelectedItem(); //employeeModel object to get selected item on the table list
+	 
+	 /*
+	  * Item selected in the Tableview referenced back to the employee object created above 'epMouseE' sets the Text back
+	  * to the Textfield to give the user feedback.
+	  */
 	 idTf.setText(""+ epMouseE.getId());
 	 firstNameTf.setText("" +epMouseE.getFirstName());
 	 surnameTf.setText(""+epMouseE.getSurname());
@@ -195,13 +240,11 @@ public class MainViewController implements Initializable {
 	 
 	}
 	
-	/**
+	/*
 	 * Shared query command which is called upon execution and does not return a recordset:
 	 * CREATE/INSERT/UPDATE/DELETE/DROP/etc.
-	 * 
-	 * @throws SQLException If something goes wrong
+	 * Query updater function called upon execution of the insertion method to establish a connection method to localhost server and execute query call (INSERT/UPDATE/DELETE)
 	 */
-	//Query updater function called upon execution of the insertion method to establish a connection method to localhost server and execute query
 	public void executeQuery(String query) throws SQLException {
 		Connection conn = getConnection();
 		Statement st;
@@ -215,18 +258,15 @@ public class MainViewController implements Initializable {
 		}
 	}
 	
-	
+	/*
+	 * method call to return to previous stage (scene/window)
+	 */
 	@FXML
 	private void returnSceneChange(ActionEvent event) throws IOException {
 
-		Stage book_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		book_stage.setScene(SceneLoader.scene1); 
-		book_stage.show();
+		Stage ep_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		ep_stage.setScene(SceneLoader.scene1); 
+		ep_stage.show();
 	}
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-
-	}	
 }
+	

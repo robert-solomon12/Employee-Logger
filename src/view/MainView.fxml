@@ -11,11 +11,11 @@
 
 <VBox prefHeight="429.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="428.0" prefWidth="835.0" VBox.vgrow="ALWAYS">
+    <AnchorPane fx:id="mainFormView" maxHeight="-1.0" maxWidth="-1.0" prefHeight="428.0" prefWidth="835.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="94.0" layoutY="29.0" prefHeight="59.0" prefWidth="575.0" style="&#10;" text="Employee JAVA/MySQL CRUD APPLICATION" textAlignment="CENTER" textFill="#ee0c0c" wrapText="false">
+        <Label alignment="CENTER" layoutX="94.0" layoutY="29.0" prefHeight="59.0" prefWidth="693.0" style="&#10;" text="EMPLOYEE LOGGER/MySQL" textAlignment="CENTER" textFill="#9c6d19" wrapText="false">
           <font>
-            <Font size="27.0" />
+            <Font name="Elephant" size="27.0" />
           </font>
         </Label>
             <TextField fx:id="idTf" layoutX="105.0" layoutY="102.0" prefHeight="31.0" prefWidth="126.0" />
@@ -24,14 +24,42 @@
             <TextField fx:id="ssNumberTf" layoutX="105.0" layoutY="216.0" prefHeight="31.0" prefWidth="126.0" />
             <TextField fx:id="salaryTf" layoutX="105.0" layoutY="255.0" prefHeight="31.0" prefWidth="126.0" />
             <TextField fx:id="genderTf" layoutX="105.0" layoutY="294.0" prefHeight="31.0" prefWidth="126.0" />
-            <Button fx:id="updateB" layoutX="103.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleButtonA" prefHeight="40.0" prefWidth="77.0" text="Update" />
-            <Button fx:id="deleteB" layoutX="193.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleButtonA" prefHeight="40.0" prefWidth="77.0" text="Delete" />
-            <Button fx:id="insertB" layoutX="16.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleButtonA" prefHeight="40.0" prefWidth="77.0" text="Insert" />
-            <Label layoutX="16.0" layoutY="139.0" prefHeight="31.0" prefWidth="77.0" text="First Name:" />
-            <Label layoutX="16.0" layoutY="178.0" prefHeight="31.0" prefWidth="77.0" text="Surname:" />
-            <Label layoutX="16.0" layoutY="255.0" prefHeight="31.0" prefWidth="77.0" text="Salary:" />
-            <Label layoutX="16.0" layoutY="216.0" prefHeight="31.0" prefWidth="77.0" text="S.S. No.:" />
-            <Label layoutX="16.0" layoutY="294.0" prefHeight="31.0" prefWidth="77.0" text="Gender:" />
+            <Button fx:id="updateB" layoutX="103.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleButtonA" prefHeight="40.0" prefWidth="77.0" text="Update" textFill="#9c6d19">
+               <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font></Button>
+            <Button fx:id="deleteB" layoutX="193.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleButtonA" prefHeight="40.0" prefWidth="77.0" text="Delete" textFill="#9c6d19">
+               <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font></Button>
+            <Button fx:id="insertB" layoutX="16.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleButtonA" prefHeight="40.0" prefWidth="77.0" text="Insert" textFill="#9c6d19">
+               <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font></Button>
+            <Label layoutX="16.0" layoutY="102.0" prefHeight="31.0" prefWidth="77.0" text="ID:" textFill="#9c6d19">
+            <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font></Label>
+            <Label layoutX="16.0" layoutY="139.0" prefHeight="31.0" prefWidth="85.0" text="First Name:" textFill="#9c6d19">
+            <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font></Label>
+            <Label layoutX="16.0" layoutY="178.0" prefHeight="31.0" prefWidth="77.0" text="Surname:" textFill="#9c6d19">
+            <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font></Label>
+            <Label layoutX="16.0" layoutY="255.0" prefHeight="31.0" prefWidth="77.0" text="Salary:" textFill="#9c6d19">
+            <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font></Label>
+            <Label layoutX="16.0" layoutY="216.0" prefHeight="31.0" prefWidth="77.0" text="S.S. No.:" textFill="#9c6d19">
+            <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font></Label>
+            <Label layoutX="16.0" layoutY="294.0" prefHeight="31.0" prefWidth="77.0" text="Gender:" textFill="#9c6d19">
+            <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font></Label>
             <TableView fx:id="tableFormView" layoutX="278.0" layoutY="102.0" onMouseClicked="#handleMouseE" prefHeight="279.0" prefWidth="518.0">
               <columns>
                   <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
@@ -42,8 +70,11 @@
                   <TableColumn fx:id="genderColumn" prefWidth="76.0" text="Gender" />
               </columns>
             </TableView>
-            <Button fx:id="returnB" layoutX="708.0" layoutY="390.0" mnemonicParsing="false" onAction="#returnSceneChange" prefHeight="31.0" prefWidth="77.0" text="back" />
-            <Label layoutX="16.0" layoutY="102.0" prefHeight="31.0" prefWidth="77.0" text="Id:" />
+            <Button fx:id="returnB" layoutX="708.0" layoutY="390.0" mnemonicParsing="false" onAction="#returnSceneChange" prefHeight="31.0" prefWidth="77.0" text="Back" textFill="#9c6d19">
+               <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font></Button>
+            
       </children>
     </AnchorPane>
   </children>
