@@ -11,7 +11,7 @@
        <font>
        <Font name="Eras Demi ITC" size="15.0" />
                </font></Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="28.0" layoutY="124.0" prefHeight="139.0" prefWidth="545.0" text="WELCOME TO EMPLOYEE LOGGER/MySQL" textFill="#9c6d19" wrapText="true">
+      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="28.0" layoutY="124.0" prefHeight="139.0" prefWidth="545.0" text="WELCOME TO EMPLOYEE LOGGER" textFill="#9c6d19" wrapText="true">
          <font>
             <Font name="Elephant" size="36.0" />
          </font>
