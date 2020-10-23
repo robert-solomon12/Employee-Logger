@@ -175,7 +175,6 @@ public class MainViewController implements Initializable {
 	private void insertRecB(ActionEvent event) throws SQLException {
 		
 		
-//		try {	
 		//Insertion query method 'INSERT INTO' table which is defined above as a variable called 'tablename' and concatinated below   
 		String query = "INSERT INTO " +this.tableName +" VALUES (" + idTf.getText() + ",'" + firstNameTf.getText()
 		+ "','" + surnameTf.getText() + "'," + salaryTf.getText() + "," + ssNumberTf.getText() + ",'" + genderTf.getText() + "')";
@@ -183,10 +182,7 @@ public class MainViewController implements Initializable {
 		executeQuery(query);
 		showEmployees();
 		consoleFeedback.setText("Record has been successfully inserted to our Database!");
-//		} catch (SQLException e) {
-			// TODO: handle exception
-//			System.out.println("Invalid!, please enter a valid record!");
-//			consoleFeedback.setText("Invalid record, could not store in to Database!");
+
 		}
 	
 	
@@ -196,8 +192,6 @@ public class MainViewController implements Initializable {
 	 */
 	@FXML
 	private void updateRecB(ActionEvent event) throws SQLException {
-		
-	//	try {
 			
 		String query = "UPDATE " + this.tableName +" SET FIRSTNAME = '" + firstNameTf.getText()
 		+ "', SURNAME = '" + surnameTf.getText() + "', SALARY = " + salaryTf.getText() + ", SSNUMBER = " + ssNumberTf.getText() + ", GENDER = '" + genderTf.getText() + "' WHERE ID = " + idTf.getText() +"";
@@ -205,11 +199,6 @@ public class MainViewController implements Initializable {
 	    showEmployees();
 	    System.out.println("Record has been successfully updated in our Database!");
 	    consoleFeedback.setText("Record has been successfully updated in our Database!");
-//		} catch (SQLException e) {
-//			System.out.println("Could not update record, please try again!");
-//			consoleFeedback.setText("Could not update record, please try again!");
-//			// TODO: handle exception
-//		}
 	}
 	
 	/*
@@ -220,17 +209,13 @@ public class MainViewController implements Initializable {
 	@FXML
 	private void deleteRecB(ActionEvent event) throws SQLException {
 		
-//		try {
-		
+
 		String query = "DELETE FROM " +this.tableName +" WHERE ID =" + idTf.getText() + "";
 		executeQuery(query);
 		showEmployees();
 		System.out.println("Record has been successfully deleted from our Database!");
 		consoleFeedback.setText("Record has been successfully deleted from our Database!");
-//	} catch (SQLException e) {
-		// TODO: handle exception
-//		System.out.println("Could not update record, please try again!");
-	//	consoleFeedback.setText("Could not update record, please try again!");
+
 	}
 	
 	/*
@@ -272,10 +257,7 @@ public class MainViewController implements Initializable {
 			st.executeUpdate(query); 
 		} catch (SQLException ex) // This will throw a SQLException if it fails
 		{
-			System.out.println("Error has occurred while query has been called"+ex); //handles sql exception error and prints a more valid error trace to developer 
-//			ex.printStackTrace();
-//			throw ex;
-			// TODO: handle exception
+			System.out.println("Error has occurred while query has been called"+ex); //handles sql exception error and prints a more valid error trace to developer for debug
 		}
 	}
 	
