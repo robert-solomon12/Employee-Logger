@@ -26,7 +26,7 @@ The goal of this Project was to develop a three-tiered Apache, MySQL service App
    --module-path "path to your sdk lib folder directory" --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.fxml
 
 
- - However if you already have JDK 15 or a standard JDK that with JavaFx support then there's no need to follow the steps mentioned above.
+ - However if you already have JDK 15 or a standard JDK with JavaFx support then there's no need to follow the steps mentioned above.
  
  
  <br> Should you have any problems, don't hesitate to contact me on my email at:</br> [20079462@mail.wit.ie](mailto:20079462@mail.wit.ie)
