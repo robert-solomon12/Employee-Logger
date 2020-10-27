@@ -7,10 +7,14 @@ The goal of this Project was to develop a three-tiered Apache, MySQL service App
  
  
  <img src="IMG/Main-GUI.png" width="600">
- 
+
 
  <img src="IMG/Welcome-GUI.png">
  
+
+ <img src="IMG/MAIN-VIEW-WORKING-WITH-DATABASE.png"> 
+
+
  # Steps To Consider To Get The Project Running:
  
  - 1. Install JavaFx if you don't have it by clicking help in eclipse > install new software > Add the following link in the URL located [here](https://download.eclipse.org/efxclipse/updates-released/1.2.0/site/) to install e(fx)clipse support.  
