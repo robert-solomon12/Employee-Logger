@@ -3,7 +3,7 @@ An Employee Application with C.R.U.D. Functionality connected to a PhP WampServe
 
 The goal of this Project was to develop a three-tiered Apache, MySQL service Application to demonstrate web and database connectivity using Java and JDBC.
  
- - I developed my database using WAMP to provide a data source to allow my Java Project to perform SQL C.R.U.D. and Query operations from within my Java Application. You can have preview my project in the images below. 
+ - I developed my database using WAMP to provide a data source to allow my Java Project to perform SQL C.R.U.D. and Query operations from within my Java Application. You can have a preview my project in the images below. 
  
  
  <img src="IMG/Main-GUI.png" width="600">
