@@ -25,7 +25,7 @@ The goal of this Project was to develop a three-tiered Apache, MySQL service App
 
    Go to Windows > Preferences > Java > Build Path > User Libraries > New > Give it a Name > Add External JARs > Open your JAR Files located in your SDK lib folder and add it to your project   library.
 
- - 4. Next configure the Run Configuration and add the path to your sdk lib folder in your arguments (in double quotations) as the following:
+ - 4. Next configure the Run Configuration and add the path to your sdk lib folder in the VM arguments section (in double quotations) as the following:
 
    --module-path "path to your sdk lib folder directory" --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.fxml
 
