@@ -1,5 +1,5 @@
 # Employee-Logger
-An Employee Application with C.R.U.D. Functionality connected to a PhP WampServer with MySQL.
+An Information Logging Application System with C.R.U.D. Functionality connected to a PhP WampServer with MySQL.
 
 The goal of this Project was to develop a three-tiered Apache, MySQL service Application to demonstrate web and database connectivity using Java and JDBC. (For my Distributed Systems Assignment)
  
